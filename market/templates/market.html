@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    The Market
+{% endblock %}
+
+{% block content %}
+<h1>The Marketplace</h1>
+
+    <table class="table table-hover table-dark">
+        <thead>
+            <tr>
+             <!-- Your Columns HERE -->
+             <th scope="col">ID</th>
+             <th scope="col">Name</th>
+             <th scope="col">Barcode</th>
+             <th scope="col">Price</th>
+             <th scope="col">Options</th>
+            </tr>
+        </thead>
+
+        <tbody>
+        <!-- Your rows inside the table HERE: -->
+        {% for item in items %} <!-- Logic Tag in Jinja -->
+        <tr>
+            <td>{{ item.id }}</td>
+            <td>{{ item.name }}</td>
+            <td>{{ item.barcode }}</td>
+            <td>${{ item.price }}</td>
+
+            <td>
+                <button class="btn btn-outline btn-info">More Info</button>
+                <button class="btn btn-outline btn-success">Purchase</button>
+            </td>
+        </tr>
+        {% endfor %}  <!-- Ending the "for" loop -->
+
+        </tbody>
+    </table>
+
+{% endblock %}

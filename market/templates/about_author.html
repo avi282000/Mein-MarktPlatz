@@ -1,0 +1,202 @@
+<!-- An old page I made a few years ago -->
+
+{% extends 'base.html' %}
+
+{% block title %}
+
+	A Little bit about myself
+
+{% endblock %}
+
+{% block head %}
+	<link rel="icon" href="https://raw.githubusercontent.com/avi282000/Me/master/icon.ico">
+	<!-- Added some fonts -->
+	<link href="https://fonts.googleapis.com/css?family=Dancing+Script&display=swap" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Montserrat+Alternates&display=swap" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Spartan&display=swap" rel="stylesheet">
+{% endblock %}
+
+{% block content %}
+		<!--The Header element -->
+		<style type="text/css">
+			body{
+			background-color: #03164D;
+			margin:0;
+			color: #0D99B8;
+			font-family: 'Spartan', sans-serif;
+			line-height: 30px;
+			}
+			header{
+				background-color:#006994;
+				text-align: center;
+				padding-top: 50px;
+				padding-bottom: 50px;
+			}
+			h1,h2{
+				font-family: 'Montserrat Alternates', sans-serif;
+
+			}
+			header h1{
+				color:#28AECE;
+				font-family: "Dancing Script", cursive;
+				font-size:50px;
+			}
+			header img{
+				border-radius: 1080px;
+				width:720px;
+				border:10px solid #2494AF;
+			}
+			main{
+				max-width: 800px;
+				margin:0 auto;
+				padding: 0 20px;
+			}
+			main img{
+				max-width:100%;
+			}
+			h2{
+				font-size: 36px;
+				margin:40px 0 10px;
+			}
+
+			caption{
+				color:#999999;
+				font-style: italic;
+				margin-top: 0;
+			}
+			p{
+				font-size: 20px;
+			}
+			form{
+				color:#A5A7A7;
+			}
+			input[type=text]{
+				border:none;
+				background-color:#445253;
+			}
+			input[type=submit]{
+
+				color:white;
+				background-color:#05484D;
+				padding: 16px 32px;
+				border:none;
+				margin: 4px 2px;
+				text-decoration: none;
+				cursor: pointer;
+			}
+			a{
+				color:#2494AF;
+				text-decoration: none;
+			}
+			a:hover{
+				color:#160FF8;
+				opacity: 0.5;
+				text-decoration: none;
+			}
+			a:active{
+				color:#CB0E0E
+			}
+			footer{
+				background-color:#006994;
+				text-align: center;
+				color: #403C3C;
+				margin:0;
+				padding:20px;
+			}
+			table{
+				border:none;
+			}
+			th,td{
+				padding: 15px;
+				text-align: center;
+				border-bottom: 1px solid #ddd;
+			}
+			tr:hover{
+				background-color: #145D61;
+			}
+		</style>
+
+		<header>
+			<img src="https://raw.githubusercontent.com/avi282000/Me/master/icon.ico" alt="Me">
+			<h1>Me </h1>
+		</header>
+		<!-- Main element -->
+
+		<main>
+				<h2> Music I like</h2>
+				<img src="https://github.com/avi282000/Me/blob/master/Music.jpg?raw=true" style="opacity:0.6;" alt="Some of the Artists I like">
+				<table>
+					<caption>Some of The Music That I Enjoy</caption>
+					<tr>
+						<th>Song</th>
+						<th>Band/Singer</th>
+						<th>Released in</th>
+					</tr>
+					<tr>
+						<td><a href="https://www.youtube.com/watch?v=a-64R6OmY0E" target="_blank"><i>Wehrmacht</i></a></td>
+						<td><a href="https://en.wikipedia.org/wiki/Sabaton_(band)" target="_blank">Sabaton</a></td>
+						<td>2010</td>
+					</tr>
+					<tr>
+						<td><a href="https://www.youtube.com/watch?v=eaW76aDKObk" target="_blank"><i>Seven Pillars of Wisdom</i></a></td>
+						<td><a href="https://en.wikipedia.org/wiki/Sabaton_(band)" target="_blank">Sabaton</a></td>
+						<td>2019</td>
+					</tr>
+					<tr>
+						<td><a href="https://www.youtube.com/watch?v=tLxqR1TxEjU&list=PL3Hg7J2NZODU8ibwi28N0JIAPkifyEunm" target="_blank"><i>The Drone Racing League</i></a></td>
+						<td><a href="https://en.wikipedia.org/wiki/Gunship_(band)" target="_blank">Gunship</a></td>
+						<td>2018</td>
+					</tr>
+					<tr>
+						<td><a href="https://www.youtube.com/watch?v=Y1D3a5eDJIs&list=PL3Hg7J2NZODX-SiVzCU91vFohnQyJaLup&index=9" target="_blank"><i>Runnin' Down A Dream</i></a></td>
+						<td><a href="https://en.wikipedia.org/wiki/Tom_Petty_and_the_Heartbreakers" target="_blank">Tom Petty and The Heartbreakers</a></td>
+						<td>1989</td>
+					</tr>
+					<tr>
+						<td><a href="https://www.youtube.com/watch?v=KThbNtVCFs4" target="_blank"><i>A Little Less Conversation</i></a></td>
+						<td><a href="https://en.wikipedia.org/wiki/Elvis_Presley" target="_blank">Elvis Presley</a></td>
+						<td>1968</td>
+					</tr>
+					<tr>
+						<td><a href="https://www.youtube.com/watch?v=WOsMgYA3sxQ" target="_blank"><i>All I Have To Do Is Dream</i></a></td>
+						<td><a href="https://en.wikipedia.org/wiki/The_Everly_Brothers" target="_blank">The Everly Brothers</a></td>
+						<td>1958</td>
+					</tr>
+				</table>
+			</div>
+			<div>
+				<h2>My Hobbies</h2>
+				<ol>
+					<li>Gaming</li>
+					<ul type="none">
+						<li><img src="https://github.com/avi282000/Me/blob/master/Game.jpg?raw=true" style="opacity:0.6;" alt="Hearts of Iron IV &copy;"></li>
+					</ul>
+					<li>Astronomy</li>
+					<ul type="none">
+						<li><img src="https://github.com/avi282000/Me/blob/master/astro.jpg?raw=true" style="opacity:0.6;" alt="The Moon through my Telescope"></li>
+					</ul>
+					<li>Recreational Mathematics</li>
+					<ul type="none">
+						<li><img src="https://github.com/avi282000/Me/blob/master/math.jpg?raw=true" style="opacity:0.6;" alt="Some of my Favourite Books"></li>
+					</ul>
+					<li>Learning other Languages</li>
+					<ul type="none">
+						<li><img src="https://github.com/avi282000/Me/blob/master/German.jpg?raw=true" style="opacity:0.6;" alt="Learning German through Duolingo &copy;"></li>
+					</ul>
+					<li>Learning stuff <b>other</b> than Languages</li>
+					<ul type="none">
+						<li><img src="https://github.com/avi282000/Me/blob/master/stuff.png?raw=true" style="opacity:0.6;" alt="Physics! :)"></li>
+					</ul>
+					<li>Foolin' around with the PC</li>
+					<ul type="none">
+						<li><img src="https://github.com/avi282000/Me/blob/master/PC.jpg?raw=true" style="opacity:0.6;" alt="I like Windows 95 &copy;"></li>
+					</ul>
+				</ol>
+			</div>
+			</main>
+		<!-- Footer Element -->
+		<footer>
+			<p><a href="#">Scroll to top</a></p>
+		</footer>
+
+{% endblock %}
