@@ -23,18 +23,19 @@
     <br>
 
     <form method="POST" class="form-register" style="color:white">
+      {{ form.hidden_tag() }}
 
       {{ form.username.label() }}
       {{ form.username(class="form-control", placeholder="Your User Name") }}
 
       {{ form.email.label() }}
-      {{ form.username(class="form-control", placeholder="Your Email Address") }}
+      {{ form.email(class="form-control", placeholder="Your Email Address") }}
 
       {{ form.password1.label() }}
-      {{ form.username(class="form-control", placeholder="Your Password") }}
+      {{ form.password1(class="form-control", placeholder="Your Password") }}
 
       {{ form.password2.label() }}
-      {{ form.username(class="form-control", placeholder="Confirm Your Password") }}
+      {{ form.password2(class="form-control", placeholder="Confirm Your Password") }}
 
       <br>
 
