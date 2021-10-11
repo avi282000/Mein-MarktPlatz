@@ -7,35 +7,51 @@
 {% block content %}
 <h1>The Marketplace</h1>
 
-    <table class="table table-hover table-dark">
-        <thead>
+    <div class="row" style="margin-top:20px; margin-left:20px">
+        <div class="col-8">
+
+            <h2>The Shelves</h2>
+            <p>Click on an item to purchase it</p>
+            <br>
+
+            <table class="table table-hover table-dark">
+            <thead>
+                <tr>
+                 <th scope="col">ID</th>
+                 <th scope="col">Name</th>
+                 <th scope="col">Barcode</th>
+                 <th scope="col">Price</th>
+                 <th scope="col">Options</th>
+                </tr>
+            </thead>
+
+            <tbody>
+            {% for item in items %} <!-- Logic Tag in Jinja -->
+            {% include 'includes/items_modals.html' %}
             <tr>
-             <!-- Your Columns HERE -->
-             <th scope="col">ID</th>
-             <th scope="col">Name</th>
-             <th scope="col">Barcode</th>
-             <th scope="col">Price</th>
-             <th scope="col">Options</th>
+                <td>{{ item.id }}</td>
+                <td>{{ item.name }}</td>
+                <td>{{ item.barcode }}</td>
+                <td>${{ item.price }}</td>
+
+                <td>
+                    <button class="btn btn-outline btn-info" data-toggle="modal" data-target="#Modal-MoreInfo-{{ item.id }}">More Info</button>
+                    <button class="btn btn-outline btn-success" data-toggle="modal" data-target="#Modal-ConfirmPurchase-{{ item.id }}">Purchase</button>
+                </td>
             </tr>
-        </thead>
+            {% endfor %}  <!-- Ending the "for" loop -->
 
-        <tbody>
-        <!-- Your rows inside the table HERE: -->
-        {% for item in items %} <!-- Logic Tag in Jinja -->
-        <tr>
-            <td>{{ item.id }}</td>
-            <td>{{ item.name }}</td>
-            <td>{{ item.barcode }}</td>
-            <td>${{ item.price }}</td>
+            </tbody>
+        </table>
+        </div>
 
-            <td>
-                <button class="btn btn-outline btn-info">More Info</button>
-                <button class="btn btn-outline btn-success">Purchase</button>
-            </td>
-        </tr>
-        {% endfor %}  <!-- Ending the "for" loop -->
+        <div class="col-4">
+            <h2>Owned Items</h2>
+            <p>These are the items you currently own. Click on one to put it back on the shelf</p>
+        </div>
 
-        </tbody>
-    </table>
+    </div>
+
+
 
 {% endblock %}
