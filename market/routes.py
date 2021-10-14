@@ -1,7 +1,7 @@
 from market import app
 from flask import render_template, redirect, url_for, flash, request
 from market.models import Item, User
-from market.forms import RegisterForm, LoginForm, PurchaseItemForm
+from market.forms import RegisterForm, LoginForm, PurchaseItemForm, SellItemForm
 from market import db
 from flask_login import login_user, logout_user, login_required, current_user
 
@@ -18,7 +18,9 @@ def home_page():
 def market_place():
     flash(f'ACHTUNG! This Site Is Under Construction!', category='info')
     purchase_form = PurchaseItemForm()
-    if request.method == "POST":  # Purchasing Items
+    sell_form = SellItemForm()
+    if request.method == "POST":
+        # Purchasing Items
         purchased_item = request.form.get('purchased_item')
         purchased_item_object = Item.query.filter_by(name=purchased_item).first()
         if purchased_item_object:
@@ -27,10 +29,23 @@ def market_place():
                 flash(f'Successfully Bought {purchased_item_object.name} for ${purchased_item_object.price}!', category='success')
             else:
                 flash(f'Insufficient Funds in the Wallet (${ current_user.wallet }) for the Purchase (${ purchased_item_object.price })', category='danger')
+
+        # Selling Items
+        sold_item = request.form.get('sold_item')
+        sold_item_object = Item.query.filter_by(name=sold_item).first()
+        if sold_item_object:
+            if current_user.can_sell(sold_item_object):
+                sold_item_object.sell(current_user)
+                flash(f'{sold_item_object.name} has been successfully put back on the shelf. You\'ve gained ${sold_item_object.price}!', category='success')
+            else:
+                flash(f'Something went wrong :(', category='danger')
+
         return redirect(url_for("market_place"))
+
     if request.method == "GET":
         items = Item.query.filter_by(owner=None)
-        return render_template("market.html", items=items, purchase_form=purchase_form)
+        owned_items = Item.query.filter_by(owner=current_user.id)
+        return render_template("market.html", items=items, purchase_form=purchase_form, owned_items=owned_items, sell_form=sell_form)
 
 
 @app.route('/about_author')
