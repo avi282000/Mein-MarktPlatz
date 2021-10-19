@@ -2,9 +2,10 @@ from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 from flask_bcrypt import Bcrypt
 from flask_login import LoginManager
-
+from flask_cors import CORS
 
 app = Flask(__name__)
+CORS(app)
 
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///marketplace.db'
 app.config['SECRET_KEY'] = 'c72c6dc55741ce3e40667084'

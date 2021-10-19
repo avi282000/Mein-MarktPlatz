@@ -1,5 +1,5 @@
 from market import app
-from flask import render_template, redirect, url_for, flash, request
+from flask import render_template, redirect, url_for, flash, request,jsonify
 from market.models import Item, User
 from market.forms import RegisterForm, LoginForm, PurchaseItemForm, SellItemForm
 from market import db
@@ -11,6 +11,25 @@ from flask_login import login_user, logout_user, login_required, current_user
 def home_page():
     flash(f'ACHTUNG! This Site Is Under Construction!', category='info')
     return render_template('home.html')
+
+
+@app.route('/admin0x47e5534e3abd569c03c0e593b904b4266069feb8bbd0e8aeed8b5e30e277Controls')
+def admin_controls():
+    items = Item.query.filter_by()
+    users = User.query.filter_by()
+    return render_template('admin_controls.html', items=items, users=users)
+
+
+@app.route('/0x256b3bafe9c099dcffb7b40c76f3571007', methods=['GET'])
+def db_page():
+    items = []
+    for item in Item.query.all():
+        items.append(item.id)
+        items.append(item.name)
+        items.append(item.price)
+        items.append(item.barcode)
+        items.append(item.description)
+    return jsonify([items])
 
 
 @app.route('/market', methods=['GET', 'POST'])
