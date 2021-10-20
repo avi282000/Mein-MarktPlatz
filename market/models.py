@@ -1,8 +1,7 @@
-from market import db
+from market import db, ma
 from market import bcrypt
 from market import login_manager
 from flask_login import UserMixin
-from flask import jsonify
 
 
 @login_manager.user_loader
@@ -43,8 +42,6 @@ class User(db.Model, UserMixin):
         return item_object in self.items
 
 
-
-
 class Item(db.Model):
     id = db.Column(db.Integer(), primary_key=True)
     name = db.Column(db.String(length=30), nullable=False, unique=True)
@@ -52,7 +49,6 @@ class Item(db.Model):
     barcode = db.Column(db.String(length=12), nullable=False, unique=True)
     description = db.Column(db.String(length=1024), nullable=False, unique=True)
     owner = db.Column(db.Integer(), db.ForeignKey('user.id'))
-
 
 
     def __repr__(self):
@@ -68,4 +64,12 @@ class Item(db.Model):
         user.wallet += self.price
         db.session.commit()
 
+
+class ItemShareSchema(ma.Schema):
+    class Meta:
+        fields = ('id', 'name', 'price', 'barcode', 'description')
+
+
+item_share_schema = ItemShareSchema()
+items_share_schema = ItemShareSchema(many=True)
 

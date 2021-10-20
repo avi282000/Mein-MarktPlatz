@@ -1,6 +1,6 @@
 from market import app
 from flask import render_template, redirect, url_for, flash, request,jsonify
-from market.models import Item, User
+from market.models import Item, User, items_share_schema
 from market.forms import RegisterForm, LoginForm, PurchaseItemForm, SellItemForm
 from market import db
 from flask_login import login_user, logout_user, login_required, current_user
@@ -22,14 +22,18 @@ def admin_controls():
 
 @app.route('/0x256b3bafe9c099dcffb7b40c76f3571007', methods=['GET'])
 def db_page():
-    items = []
-    for item in Item.query.all():
-        items.append(item.id)
-        items.append(item.name)
-        items.append(item.price)
-        items.append(item.barcode)
-        items.append(item.description)
-    return jsonify([items])
+    shares = db.session.query(Item).all()
+    result = items_share_schema.dump(shares)
+    return jsonify(result)
+
+#    items = []
+#    for item in Item.query.all():
+#        items.append(item.id)
+#        items.append(item.name)
+#        items.append(item.price)
+#        items.append(item.barcode)
+#        items.append(item.description)
+#    return jsonify([items])
 
 
 @app.route('/market', methods=['GET', 'POST'])
