@@ -48,6 +48,7 @@ class Item(db.Model):
     price = db.Column(db.Integer(), nullable=False)
     barcode = db.Column(db.String(length=12), nullable=False, unique=True)
     description = db.Column(db.String(length=1024), nullable=False, unique=True)
+    image = db.Column(db.String())
     owner = db.Column(db.Integer(), db.ForeignKey('user.id'))
 
 
@@ -67,7 +68,7 @@ class Item(db.Model):
 
 class ItemShareSchema(ma.Schema):
     class Meta:
-        fields = ('id', 'name', 'price', 'barcode', 'description')
+        fields = ('id', 'name', 'price', 'barcode', 'description', 'image')
 
 
 item_share_schema = ItemShareSchema()

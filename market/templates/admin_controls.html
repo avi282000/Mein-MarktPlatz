@@ -21,6 +21,7 @@
                  <th scope="col">Barcode</th>
                  <th scope="col">Price</th>
                  <th scope="col">Description</th>
+                 <th scope="col">Image URL</th>
                 </tr>
             </thead>
 
@@ -32,6 +33,7 @@
                 <td>{{ item.barcode }}</td>
                 <td>${{ item.price }}</td>
                 <td>{{ item.description }}</td>
+                <td>{{ item.image }}</td>
             </tr>
             {% endfor %}  <!-- Ending the "for" loop -->
 
